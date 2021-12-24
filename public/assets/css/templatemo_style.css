@@ -402,6 +402,17 @@ h6 {
   /* stops bg color from leaking outside the border: */;
 }
 
+.toggle-content2 {
+    margin-top: 30px;
+    padding: 30px;
+    background-color: white;
+    overflow: hidden;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-clip: padding-box;
+    /* stops bg color from leaking outside the border: */;
+}
+
 .tabItem {
     width: 33.333%;
     padding: 2px;

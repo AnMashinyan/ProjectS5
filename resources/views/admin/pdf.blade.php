@@ -1,23 +1,52 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Որոշում {{$decision->category_id}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Արձանագրություն {{$decision->id}}</title>
+    <style>
+        body { font-family: DejaVu Sans, sans-serif;}
+        p {margin: 8px; line-height: 14px; font-size: 12px;}
+        .topDiv {text-align: center; font-size: 14px}
+        .footer {margin-top: 50px; text-align: center;}
+    </style>
 </head>
 <body>
 <div>
-    <table>
+    <div class="topDiv">
+    <h4>Արձանագրություն {{$decision->id}}</h4>
+    <h5>(Նիստը կայացել է օգոստոսի {{\Carbon\Carbon::parse($decision->created_at)->format('d m Y')}})</h5>
+    </div>
+    <br>
+{{--    Օրակարգում՝--}}
+    <div>
+        @foreach(json_decode($decision->text) as $item)
+            <div>
+                <p><b>{{$loop->iteration}}</b>. {{$item->heard}}</p>
+                <p><b>Պատասխանեցին</b>. {{$item->reply}}</p>
+                <p><b>Որոշեցին</b>. {{$item->decided}}</p>
+            </div>
+        @endforeach
+    </div>
+    <div class="footer">
+        <p>ՄԽ նախագահ՝ Է․ Հովհաննիսյան</p>
+        <p>Քարտուղար՝ Ա․ Հարությունյան</p>
+    </div>
+{{--    <table>
         <tr>
             <th>{{$decision->id}}</th>
         </tr>
         @foreach(json_decode($decision->text) as $item)
             <tr>
-                <td>{{$item->heard}}</td>
-                <td>{{$item->reply}}</td>
-                <td>{{$item->decided}}</td>
+                <td>Լսեցին {{$loop->iteration}}։ {{$item->heard}}</td>
+                <td>Պատասխանեցին {{$item->reply}}</td>
+                <td>Որոշեցին {{$item->decided}}</td>
                 <td>{{\Carbon\Carbon::parse($item->created_at)->format('d m Y')}}</td>
             </tr>
         @endforeach
-    </table>
+    </table>--}}
 </div>
 </body>
 </html>

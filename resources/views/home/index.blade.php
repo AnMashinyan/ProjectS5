@@ -253,7 +253,7 @@
                 <div id="menu-4" class="contact content">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="toggle-content text-center spacing">
+                            <div class="toggle-content2 text-center spacing">
                                 <h3>Հետադարձ կապ</h3>
                                 <p>Մ. Իշխանի անվան հ. 5 հիմնական դպրոց
                                     <br><br>

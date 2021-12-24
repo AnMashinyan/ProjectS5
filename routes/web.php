@@ -18,7 +18,7 @@ Route::group(['prefix' => 'verified', 'namespace' => 'Verified', 'middleware' =>
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
     Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'index'])->name('admin.index');
-    Route::get('decisions', [\App\Http\Controllers\Admin\AddDecisionsController::class, 'index']);
+    Route::get('decisions', [\App\Http\Controllers\Admin\AddDecisionsController::class, 'index'])->name('admin.decisions');
     Route::post('decisions/insert', [\App\Http\Controllers\Admin\AddDecisionsController::class, 'insert'])->name('decisions.insert');
     Route::get('decisions/delete/{id}',[\App\Http\Controllers\Admin\AddDecisionsController::Class,"delete"]);
     Route::get('confirm/{user}', [\App\Http\Controllers\Admin\MainController::class, 'confirm']);

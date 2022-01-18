@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
     <title>Admin</title>
+    <link rel="icon" href="{{asset('assets/images/logo.png')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 {{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>--}}
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -30,6 +31,8 @@
                             <option value="2">Կառավարման խորհուրդ</option>
                             <option value="3">Ծնողական խորհուրդ</option>
                             <option value="4">Աշակերտական խորհուրդ</option>
+                            <option value="5">Մեթոդմիավորում</option>
+                            <option value="6">Դասղեկներ</option>
                         </select>
                         <table class="table table-bordered table-striped" id="user_table">
                             <thead>
@@ -63,7 +66,7 @@
                                 {{--                            <p>{{$item->reply}}</p>--}}
                                 {{--                            <p>{{$item->decided}}</p>--}}
                                 <span>{{\Carbon\Carbon::parse($item->created_at)->format('d m Y')}}</span>
-                                <a href="{{url('decisions/pdfexport/' . $value->id)}}"><img
+                                <a href="{{url('decisions/pdfexport/' . $value->id)}}" target="_blank"><img
                                         src="{{asset('assets/images/pdf-file.png')}}" alt="" width="15"></a>
                                 <a href="{{url('admin/decisions/delete/' . $value->id)}}"
                                    onclick="return confirm('Ուզում եք ջնջել ?')"><img

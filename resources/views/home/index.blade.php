@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('assets/images/pdf-file.png')}}">
+    <link rel="icon" href="{{asset('assets/images/logo.png')}}">
     <link
         href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
         rel="stylesheet">
@@ -130,10 +130,10 @@
                                 <div style="width: 100%;">
                                     <h3>Մեթոդմիավորում</h3>
                                 </div>
-                                @foreach($decision as $deci)
+                                @foreach($decision_5 as $deci_5)
                                     <div class="tabItem">
                                         <img src="{{asset('assets/images/pdf-file.png')}}" alt="">
-                                        <a href="{{url('decisions/pdfexport/' . $deci->id)}}" target="_blank">{{$deci->created_at->format('d m Y')}}</a>
+                                        <a href="{{url('decisions/pdfexport/' . $deci_5->id)}}" target="_blank">{{$deci_5->created_at->format('d m Y')}}</a>
                                     </div>
                                 @endforeach
                             </div>
@@ -141,10 +141,10 @@
                                 <div style="width: 100%;">
                                     <h3>Դասղեկներ</h3>
                                 </div>
-                                @foreach($decision as $deci)
+                                @foreach($decision_6 as $deci_6)
                                     <div class="tabItem">
                                         <img src="{{asset('assets/images/pdf-file.png')}}" alt="">
-                                        <a href="{{url('decisions/pdfexport/' . $deci->id)}}" target="_blank">{{$deci->created_at->format('d m Y')}}</a>
+                                        <a href="{{url('decisions/pdfexport/' . $deci_6->id)}}" target="_blank">{{$deci_6->created_at->format('d m Y')}}</a>
                                     </div>
                                 @endforeach
                             </div>
@@ -333,27 +333,26 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 footer">
-            <p id="footer-text">Copyright &copy; 2021 <a href="#">text</a></p>
+            <p id="footer-text">Copyright &copy; {{date('Y')}} <a href="#"></a></p>
         </div>
     </div>
 </div>
 <script src="{{asset('assets/js/vendor/jquery-1.10.1.min.js')}}"></script>
-<script>window.jQuery || document.write('<script src="{{asset('assets/js/vendor/jquery-1.10.1.min.js"><\/script>')}}') < /script>
-    <script src="{{asset('assets/js/jquery.easing-1.3.js')}}"></script>
+{{--<script>window.jQuery || document.write('<script src="{{asset('assets/js/vendor/jquery-1.10.1.min.js"><\/script>')}}') < /script>--}}
+<script src="{{asset('assets/js/jquery.easing-1.3.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.js')}}"></script>
 <script src="{{asset('assets/js/plugins.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script>
 <script type="text/javascript">
     jQuery(function ($) {
         $.supersized({
-            slide_interval: 5000, // Length between transitions
+            slide_interval: 10000, // Length between transitions
             transition: 1, // 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
             transition_speed: 700, // Speed of transition
-            // Components
             slide_links: 'blank', // Individual links for each slide (Options: false, 'num', 'name', 'blank')
             slides: [ // Slideshow Images
                 {
-                    image: 'assets/images/templatemo-slide-1.jpg'
+                    image: 'assets/images/templatemo-slide-3.jpg'
                 }, {
                     image: 'assets/images/templatemo-slide-2.jpg'
                 }

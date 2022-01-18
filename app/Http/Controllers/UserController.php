@@ -18,10 +18,19 @@ class UserController extends Controller
     {
         $request->validate([
             'advice' => 'required',
-            'name' => 'required',
-            'surname' => 'required',
+            'name' => 'required|min:3',
+            'surname' => 'required|min:3',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed',
+            'password' => 'required|confirmed|min:3',
+        ],
+        [
+            'advice.required' => 'Ընտրել խորհուրդը',
+            'name.required' => 'Գրեք ձեր անունը',
+            'surname.required' => 'Գրեք ձեր ազգանունը',
+            'email.required' => 'Լրացրեք Էլ․ հասցեն',
+            'email.email' => 'Այդպիսի Էլ․ հասցե գոյություն չունի',
+            'email.unique' => 'Այդպիսի Էլ․ հասցե գոյություն ունի',
+            'password.required' => 'Լրացրեք գաղտնաբառը',
         ]);
 
         $user = User::create([
@@ -47,6 +56,11 @@ class UserController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+        ],
+        [
+            'email.required' => 'Լրացրեք Էլ․ հասցեն',
+            'email.email' => 'Այդպիսի Էլ․ հասցե գոյություն չունի',
+            'password.required' => 'Լրացրեք գաղտնաբառը',
         ]);
         if (Auth::attempt([
                 'email' => $request->email,

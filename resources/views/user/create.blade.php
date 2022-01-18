@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{asset('assets/images/logo.png')}}">
     <link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
     <title>Գրանցվել</title>
 </head>
@@ -38,6 +39,8 @@
                     <option value="2">Կառավարման խորհուրդ</option>
                     <option value="3">Ծնողական խորհուրդ</option>
                     <option value="4">Աշակերտական խորհուրդ</option>
+{{--                    <option value="5">Մեթոդմիավորում</option>--}}
+{{--                    <option value="6">Դասղեկներ</option>--}}
                 </select>
                 <input type="text" name="name" class="fadeIn second" placeholder="Անուն*" value="{{old('name')}}">
                 <input type="text" name="surname" class="fadeIn third" placeholder="Ազգանուն*" value="{{old('surname')}}">

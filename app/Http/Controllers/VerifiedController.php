@@ -11,6 +11,8 @@ class VerifiedController extends Controller
     public function index()
     {
         $decision = Decision::where('category_id',Auth::user()->advice)->get()->all();
-        return view('home.index', compact('decision'));
+        $decision_5 = Decision::where('category_id',5)->get()->all();
+        $decision_6 = Decision::where('category_id',6)->get()->all();
+        return view('home.index', compact('decision','decision_5','decision_6'));
     }
 }

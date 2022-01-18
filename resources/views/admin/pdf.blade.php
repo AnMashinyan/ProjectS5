@@ -17,7 +17,7 @@
 <div>
     <div class="topDiv">
     <h4>Արձանագրություն {{$decision->id}}</h4>
-    <h5>(Նիստը կայացել է օգոստոսի {{\Carbon\Carbon::parse($decision->created_at)->format('d m Y')}})</h5>
+    <h5>(Նիստը կայացել է {{\Carbon\Carbon::parse($decision->created_at)->format('d m Y')}})</h5>
     </div>
     <br>
 {{--    Օրակարգում՝--}}
@@ -31,7 +31,7 @@
         @endforeach
     </div>
     <div class="footer">
-        <p>ՄԽ նախագահ՝ Է․ Հովհաննիսյան</p>
+        <p>Նախագահ՝ Է․ Հովհաննիսյան</p>
         <p>Քարտուղար՝ Ա․ Հարությունյան</p>
     </div>
 {{--    <table>

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['prefix' => 'verified', 'namespace' => 'Verified', 'middleware' => 'verified'], function () {
     Route::get('/', [\App\Http\Controllers\VerifiedController::class, 'index'])->name('home.index');
+    Route::get('/search', [\App\Http\Controllers\VerifiedController::class, 'search'])->name('search');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
@@ -22,6 +23,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     Route::post('decisions/insert', [\App\Http\Controllers\Admin\AddDecisionsController::class, 'insert'])->name('decisions.insert');
     Route::get('decisions/delete/{id}',[\App\Http\Controllers\Admin\AddDecisionsController::Class,"delete"]);
     Route::get('confirm/{user}', [\App\Http\Controllers\Admin\MainController::class, 'confirm']);
+    Route::get('/search', [\App\Http\Controllers\Admin\AddDecisionsController::class, 'search'])->name('admin.search');
+    Route::get('decisions/pdfexport/{id}', [\App\Http\Controllers\Admin\AddDecisionsController::class, 'pdfexport']);
 });
 Route::get('decisions/pdfexport/{id}', [\App\Http\Controllers\Admin\AddDecisionsController::class, 'pdfexport']);
 

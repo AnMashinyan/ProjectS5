@@ -9,9 +9,10 @@
     <title>Admin</title>
     <link rel="icon" href="{{asset('assets/images/logo.png')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-{{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>--}}
+    {{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>--}}
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
+    <meta name="csrf-token" content="{{{ csrf_token() }}}">
 </head>
 <body>
 <p class="logout"><a href="{{route('logout')}}">Ելք</a></p>
@@ -22,6 +23,13 @@
         <div class="fadeIn first">
             <div class="container">
                 <div class="table-responsive">
+                    <div class="searchDiv">
+                        <input type="text" name="search" class="searchInput"
+                               placeholder="Փնտրել արձանագրություն համարով">
+                        <div class="result">
+
+                        </div>
+                    </div>
                     <form method="post" id="dynamic_form">
                         <span id="result"></span>
                         <br>
@@ -51,7 +59,8 @@
                                 <td colspan="3" align="right">&nbsp;</td>
                                 <td>
                                     @csrf
-                                    <input type="submit" name="save" id="save" class="btn btn-primary" value="Հաստատել"/>
+                                    <input type="submit" name="save" id="save" class="btn btn-primary"
+                                           value="Հաստատել"/>
                                 </td>
                             </tr>
                             </tfoot>
@@ -137,5 +146,59 @@
                 }
             })
         });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(".searchInput").on("input", function () {
+            let search = $('.searchInput').val()
+            $(".result").empty()
+            $('.searchInput').css({
+                "borderColor": "inherit"
+            })
+            if (search != "") {
+                $.ajax({
+                    type: 'get',
+                    url: '{{ route('admin.search') }}',
+                    data: {search: search},
+                    success: function (r) {
+                        r = JSON.parse(r)
+                        if (r.length) {
+                            $(".result").fadeIn(250)
+                            $('.searchInput').css({
+                                "borderColor": "inherit"
+                            })
+                            r.forEach(function (element) {
+                                const event = new Date(element.created_at);
+                                let d = `${event.getDate()} ${event.getMonth() + 1} ${event.getFullYear()}`
+                                $('.result').append(`
+                                    <div class="resultDiv">
+                                        <span>${d}</span>
+                                            <a href="decisions/pdfexport/${element['id']}" target="_blank"><img
+                                                    src="{{asset('assets/images/pdf-file.png')}}" alt="" width="15"></a>
+                                            <a href="decisions/delete/${element['id']}"
+                                               onclick="return confirm('Ուզում եք ջնջել ?')"><img
+                                                    src="{{asset('assets/images/close.png')}}" width="15"></a>
+                                    </div>
+                                `)
+                            })
+                        } else {
+                            // $('.result').append(`<p>Արձանագրություն չի գտնվել</p>`)
+                            $('.searchInput').css({
+                                "borderColor": "red"
+                            })
+                        }
+                    }
+                })
+            } else {
+                $(".result").fadeOut(250)
+            }
+        })
     });
 </script>

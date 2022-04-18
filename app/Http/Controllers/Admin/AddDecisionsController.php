@@ -102,4 +102,11 @@ class AddDecisionsController extends Controller
         Decision::where('id', $id)->forceDelete();
         return redirect()->back();
     }
+
+    public function search(Request $r)
+    {
+        $search = $r->search;
+        $decision = Decision::where('id', 'LIKE', $search . '%')->get();
+        echo json_encode($decision);
+    }
 }

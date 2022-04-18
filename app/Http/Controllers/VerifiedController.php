@@ -15,4 +15,11 @@ class VerifiedController extends Controller
         $decision_6 = Decision::where('category_id',6)->get()->all();
         return view('home.index', compact('decision','decision_5','decision_6'));
     }
+
+    public function search(Request $r)
+    {
+        $search = $r->search;
+        $decision = Decision::where('category_id', Auth::user()->advice)->where('id', 'LIKE', $search . '%')->get();
+        echo json_encode($decision);
+    }
 }

@@ -12,7 +12,7 @@ body {
 }
 
 a {
-    color: #ffffff;
+    color: black;
     display:inline-block;
     text-decoration: none;
     font-weight: 400;
@@ -383,3 +383,30 @@ button:hover, a:hover {
     }
 }
 
+input.searchInput {
+    width: 85%;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 13px;
+    outline: none !important;
+}
+
+.result {
+    display: none;
+    background: #ffffffa6;
+    height: 100px;
+    overflow-y: auto;
+}
+
+.result > p {
+    padding-left: 20px;
+}
+
+.resultDiv {
+    padding: 20px 0 0 20px;
+}
+
+.resultDiv > img {
+    width: 20px;
+    margin-right: 5px;
+}

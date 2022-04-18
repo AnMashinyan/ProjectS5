@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/templatemo_misc.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/templatemo_style.css')}}">
     <script src="{{asset('assets/js/vendor/modernizr-2.6.2.min.js')}}"></script>
+    <meta name="csrf-token" content="{{{ csrf_token() }}}">
 </head>
 <body>
 <div class="bg-overlay"></div>
@@ -82,7 +83,8 @@
                                     @foreach($decision as $deci)
                                         <div class="tabItem">
                                             <img src="{{asset('assets/images/pdf-file.png')}}" alt="">
-                                            <a href="{{url('decisions/pdfexport/' . $deci->id)}}" target="_blank">{{$deci->created_at->format('d m Y')}}</a>
+                                            <a href="{{url('decisions/pdfexport/' . $deci->id)}}"
+                                               target="_blank">{{$deci->created_at->format('d m Y')}}</a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -95,7 +97,8 @@
                                     @foreach($decision as $deci)
                                         <div class="tabItem">
                                             <img src="{{asset('assets/images/pdf-file.png')}}" alt="">
-                                            <a href="{{url('decisions/pdfexport/' . $deci->id)}}" target="_blank">{{$deci->created_at->format('d m Y')}}</a>
+                                            <a href="{{url('decisions/pdfexport/' . $deci->id)}}"
+                                               target="_blank">{{$deci->created_at->format('d m Y')}}</a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -108,7 +111,8 @@
                                     @foreach($decision as $deci)
                                         <div class="tabItem">
                                             <img src="{{asset('assets/images/pdf-file.png')}}" alt="">
-                                            <a href="{{url('decisions/pdfexport/' . $deci->id)}}" target="_blank">{{$deci->created_at->format('d m Y')}}</a>
+                                            <a href="{{url('decisions/pdfexport/' . $deci->id)}}"
+                                               target="_blank">{{$deci->created_at->format('d m Y')}}</a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -121,7 +125,8 @@
                                     @foreach($decision as $deci)
                                         <div class="tabItem">
                                             <img src="{{asset('assets/images/pdf-file.png')}}" alt="">
-                                            <a href="{{url('decisions/pdfexport/' . $deci->id)}}" target="_blank">{{$deci->created_at->format('d m Y')}}</a>
+                                            <a href="{{url('decisions/pdfexport/' . $deci->id)}}"
+                                               target="_blank">{{$deci->created_at->format('d m Y')}}</a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -133,7 +138,8 @@
                                 @foreach($decision_5 as $deci_5)
                                     <div class="tabItem">
                                         <img src="{{asset('assets/images/pdf-file.png')}}" alt="">
-                                        <a href="{{url('decisions/pdfexport/' . $deci_5->id)}}" target="_blank">{{$deci_5->created_at->format('d m Y')}}</a>
+                                        <a href="{{url('decisions/pdfexport/' . $deci_5->id)}}"
+                                           target="_blank">{{$deci_5->created_at->format('d m Y')}}</a>
                                     </div>
                                 @endforeach
                             </div>
@@ -144,7 +150,8 @@
                                 @foreach($decision_6 as $deci_6)
                                     <div class="tabItem">
                                         <img src="{{asset('assets/images/pdf-file.png')}}" alt="">
-                                        <a href="{{url('decisions/pdfexport/' . $deci_6->id)}}" target="_blank">{{$deci_6->created_at->format('d m Y')}}</a>
+                                        <a href="{{url('decisions/pdfexport/' . $deci_6->id)}}"
+                                           target="_blank">{{$deci_6->created_at->format('d m Y')}}</a>
                                     </div>
                                 @endforeach
                             </div>
@@ -323,6 +330,13 @@
                         <li><a href="{{route('logout')}}">Ելք</a></li>
                     </ul>
                     <a href="#" class="toggle-menu"><i class="fa fa-bars"></i></a>
+                    <div class="searchDiv">
+                        <input type="text" name="search" class="searchInput"
+                               placeholder="Փնտրել արձանագրություն համարով">
+                        <div class="result">
+
+                        </div>
+                    </div>
                 </div>
                 <a id="prevslide" class="load-item"><i class="fa fa-angle-left"></i></a>
                 <a id="nextslide" class="load-item"><i class="fa fa-angle-right"></i></a>
@@ -337,7 +351,8 @@
         </div>
     </div>
 </div>
-<script src="{{asset('assets/js/vendor/jquery-1.10.1.min.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+{{--<script src="{{asset('assets/js/vendor/jquery-1.10.1.min.js')}}"></script>--}}
 {{--<script>window.jQuery || document.write('<script src="{{asset('assets/js/vendor/jquery-1.10.1.min.js"><\/script>')}}') < /script>--}}
 <script src="{{asset('assets/js/jquery.easing-1.3.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.js')}}"></script>
@@ -362,6 +377,56 @@
 </script>
 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script src="{{asset('assets/js/vendor/jquery.gmap3.min.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(".searchInput").on("input", function () {
+            let search = $('.searchInput').val()
+            $(".result").empty()
+            $('.searchInput').css({
+                "borderColor": "inherit"
+            })
+            if (search != "") {
+                $.ajax({
+                    type: 'get',
+                    url: '{{ route('search') }}',
+                    data: {search: search},
+                    success: function (r) {
+                        r = JSON.parse(r)
+                        if (r.length) {
+                            $(".result").fadeIn(250)
+                            $('.searchInput').css({
+                                "borderColor": "inherit"
+                            })
+                            r.forEach(function (element) {
+                                const event = new Date(element.created_at);
+                                let d = `${event.getDate()}/${event.getMonth() + 1}/${event.getFullYear()}`
+                                $('.result').append(`
+					<div class="resultDiv">
+						<img src="{{asset('assets/images/pdf-file.png')}}" alt="">
+                        <a href="decisions/pdfexport/${element['id']}" target="_blank">${d}</a>
+					</div>
+	        	`)
+                            })
+                        } else {
+                            // $('.result').append(`<p>Արձանագրություն չի գտնվել</p>`)
+                            $('.searchInput').css({
+                                "borderColor": "red"
+                            })
+                        }
+                    }
+                })
+            } else {
+                $(".result").fadeOut(250)
+            }
+        })
+    });
+</script>
 <script type="text/javascript">
     function templatemo_map() {
         $('.google-map').gmap3({

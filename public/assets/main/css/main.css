@@ -1,0 +1,793 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.headerTop {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background: #D2D2D2;
+}
+
+.headerTop input {
+    background: #D2D2D2;
+    border: none;
+    outline: none;
+}
+
+.headerTop input::placeholder {
+    font-size: 16px;
+}
+
+.headerTop a {
+    color: #4F5251;
+    font-size: 20px;
+}
+
+.login {
+    padding-right: 20px;
+}
+
+.login > i {
+    margin: 0 10px;
+}
+
+.headerBottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background: #535151;
+}
+.first{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 80px;
+}
+
+.dropbtn {
+    background-color: #535151;
+    color: white;
+    border: none;
+    cursor: pointer;
+    color: #D3D3D3;
+
+}
+.dropbtn > i{
+
+    padding-left: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:#535151;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #D3D3D3;
+    padding: 12px 16px;
+
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #535151}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #535151;
+}
+.headerBottom a {
+    color: #D3D3D3;
+}
+
+.headerBottom h2 > a {
+    letter-spacing: 8px;
+}
+
+.fon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+    margin-top: 130px;
+}
+
+.center {
+    width: 550px;
+    height: 180px;
+    background: #ffffffa1;
+    text-align: center;
+    padding: 30px 40px;
+    /*background: white;
+    opacity: 0.5;*/
+    /*background: rgb(255 255 255 / 50%);*/
+}
+
+.center > h1 {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.center > a > button {
+    width: 210px;
+    height: 40px;
+    color: white;
+    background: #303132;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    transition: 0.5s;
+}
+
+.fonBottom {
+    width: 100%;
+    height: 45px;
+    background: #E5E5E5;
+    color: #878988;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 4px;
+}
+
+.centerText {
+    width: 100%;
+    text-align: center;
+    margin: 70px 0;
+}
+
+.centerText > p {
+    margin: 20px 0;
+}
+
+.centerText > h3 {
+    color: #878988;
+    letter-spacing: 4px;
+}
+
+.centerText > h1 {
+    letter-spacing: 8px;
+}
+
+.images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.image {
+    width: 300px;
+    height: 410px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.image > button {
+    width: 100%;
+    height: 15%;
+    border: none;
+    background: #303132;
+    position: relative;
+    cursor: pointer;
+}
+
+.image > button > a {
+    color: white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25px;
+    transition: 0.5s;
+}
+
+.img {
+    width: 100%;
+    height: 85%;
+}
+
+.a2 {
+    opacity: 0;
+}
+
+.img > img {
+    transition: 1s;
+}
+
+.image:hover .img > img {
+    transform: scale(1.1);
+}
+
+.image:hover .a1 {
+    opacity: 0;
+}
+
+.image:hover .a2 {
+    opacity: 1;
+}
+
+.img2 {
+    position: relative;
+    margin-bottom: 50px;
+
+}
+.sale > h3{
+    margin-top: -50px;
+}
+.image2{
+    margin-top: 140px;
+}
+
+.sale {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 8px;
+    color: #303132;
+    transition: 0.5s;
+}
+
+.sale:hover {
+    color: #717070;
+}
+
+.headerTop input:hover {
+    border-bottom: 1px solid black;
+}
+
+.center > a > button:hover {
+    background: white;
+    color: black;
+}
+.login  {
+    font-size: 20px;
+}
+.login:hover {
+    color: #717070;
+}
+
+.menu a:hover {
+    color: #AEC9CB;
+}
+
+.menu > li:first-child a:hover {
+    color: #AEC9CB;
+}
+
+.menu a {
+    transition: 0.5s;
+}
+
+.fix {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
+
+.chat {
+    width: 60px;
+    height: 60px;
+    background: #525050;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 10px;
+    font-size: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.footer {
+    width: 100%;
+    height: 260px;
+    background: #2E2F30;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 25px 0;
+}
+
+.footer > div {
+    text-align: center;
+}
+
+.firstFooter {
+    color: #D3D3D3;
+    margin-bottom: 30px;
+}
+
+.footer1 > a {
+    color: white;
+    margin: 0 10px;
+}
+
+.footer input {
+    width: 295px;
+    height: 30px;
+    background: #535151;
+    border: none;
+    padding-left: 20px;
+    outline: none;
+    color: white;
+    transition: 0.5s;
+}
+
+.footer input::placeholder {
+    color: white;
+}
+
+.footer button {
+    width: 295px;
+    height: 30px;
+    background: #D3D3D3;
+    border: none;
+    color: #535151;
+    margin: 10px 0 70px 0;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.by {
+    color: #D3D3D3;
+}
+
+.by > a {
+    color: #D3D3D3;
+    text-decoration: underline;
+}
+
+.footer3 a {
+    color: #D3D3D3;
+}
+
+.footer input:hover {
+    background: #D3D3D3;
+}
+
+.footer button:hover {
+    background: white;
+}
+
+@media screen and (max-width: 700px){
+    .images {
+        flex-wrap: wrap;
+    }
+    .menu{
+        /*flex-wrap: wrap;*/
+        gap: 20px;
+    }
+    .fon{
+        width: 100%;
+        height: 200px;
+
+    }
+
+}
+/*700 pixselic sksac ashxati median
+	baci scrren(ekranic)ka orinak print,vor printi hamar asenq*/
+/**/
+/*	@media screen and (min-width: 700px){
+	body {
+		color: blue;
+	}
+}*/
+@media screen and (max-width: 425px){
+    .headerBottom{
+        /*flex-wrap: wrap;*/
+        flex-direction: column;
+    }
+    .footer{
+        height: 400px;
+        flex-direction: column;
+
+    }
+    .footer1{
+        order: 1;
+    }
+    .footer2{
+        order: 3;
+    }
+    .footer3{
+        order: 2;
+    }
+    .footer button {
+        margin: 10px 0 20px 0;
+    }
+    .fon{
+        width: 100%;
+        height: 200px;
+
+    }
+    .center{
+        width: 250px;
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+
+    }
+    .center > h1 {
+        font-size: 20px;
+
+        margin-bottom: 8px;
+    }
+
+    .center> a > button {
+        font-size: 15px;
+        width: 150px;
+        height: 20px;
+
+    }
+
+
+}
+/*index_whatIsDementia*/
+.text{
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 100px;
+    font-size: 25px;
+}
+.text1{
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 170px;
+    font-size: 25px;
+}
+h1{
+    color: #1B1464;
+}
+.text1>.header1>h1 {
+    font-size: 55px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.text1 > .header1 > p{
+    margin-top: 35px;
+    font-size: 25px;
+}
+.text1 > .header1 > p{
+    margin-top: 35px;
+    font-size: 25px;
+}
+
+
+.text1 > .aboutDementia > h1{
+    margin: 35px;
+}
+.text1 > .aboutDementia > ul{
+    margin: 15px;
+}
+.text1 > .aboutDementia > ul > li {
+
+    margin-left: 55px;
+}
+
+.text1 > .cause > h1 {
+    margin: 35px;
+}
+.text1 > .care > h1{
+    margin: 35px;
+
+}
+.text1 > .type > h1 {
+    margin: 35px;
+}
+.text1 > .type > h2{
+    margin-left: 90px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    color: #1B1464;
+}
+.text1{
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 150px;
+    font-size: 25px;
+}
+.sign > h1{
+    margin: 35px;
+}
+.sign > ul{
+    margin: 15px;
+}
+.sign > ul > li {
+
+    margin-left: 55px;
+}
+.sign{
+    display: flex;
+}
+.text1 > .sign > img{
+    text-align: center;
+    width: 400px;
+    height:400px;
+    /*	margin-left: 500px;*/
+}
+.headerImg{
+    display: flex;
+    margin-top: 35px;
+}
+.headerImg > img{
+    width: 400px;
+    height: 300px;
+    text-align: center;
+}
+.about{
+    display: flex;
+}
+.about > div > img{
+    width: 300px;
+    height: 300px;
+}
+/*About page*/
+.secondPart >h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+#container1 {
+
+
+    height: 600px;
+    width: 900px;
+    margin-top: 50px;
+    background: lightblue;
+    display: grid ;
+    place-items: center
+}
+
+#slider-container {
+    height: 500px;
+    width: 105vw;
+    max-width: 900px;
+    background: lightblue;
+    box-shadow: 5px 5px 8px gray inset;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+#slider-container .btn1 {
+    position: absolute;
+    top: calc(50% - 30px);
+    height: 30px;
+    width: 30px;
+    border-left: 8px solid pink;
+    border-top: 8px solid pink;
+}
+
+#slider-container .btn1:hover {
+    transform: scale(1.2);
+}
+
+#slider-container .btn1.inactive {
+    border-color: rgb(153, 121, 126)
+}
+
+#slider-container .btn1:first-of-type {
+    transform: rotate(-45deg);
+    left: 10px
+}
+
+#slider-container .btn1:last-of-type {
+    transform: rotate(135deg);
+    right: 10px;
+}
+
+#slider-container #slider {
+    display: flex;
+    width: 1000%;
+    height: 100%;
+    transition: all .5s;
+}
+
+#slider-container #slider .slide {
+    height: 90%;
+    margin: auto 10px;
+    background-color: lightblue;
+    box-shadow: 2px 2px 4px 2px white, -2px -2px 4px 2px white;
+    display: grid;
+    place-items: center;
+}
+
+#slider-container #slider .slide span {
+    color: white;
+    font-size: 150px;
+}
+.slide > img{
+    width: 190px;
+    height: 320px;
+}
+@media only screen and (min-width: 1100px) {
+
+    #slider-container #slider .slide {
+        width: calc(2.5% - 20px);
+    }
+
+}
+
+@media only screen and (max-width: 1100px) {
+
+    #slider-container #slider .slide {
+        width: calc(3.3333333% - 20px);
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+
+    #slider-container #slider .slide {
+        width: calc(5% - 20px);
+    }
+
+}
+
+@media only screen and (max-width: 550px) {
+
+    #slider-container #slider .slide {
+        width: calc(10% - 20px);
+    }
+
+}
+.typesOfCaregivers{
+    margin-top: 80px;
+}
+.firstRow{
+    display: flex;
+}
+.typesOfCaregivers >div > div >img {
+    width: 80px;
+    height: 80px;
+}
+.typesOfCaregivers >div > div >h3 {
+    margin-top: 20px;
+    color: #1B1464;
+}
+
+.typesOfCaregivers >div > div >p {
+    margin-top: 10px;
+
+}
+.secondRow{
+    display: flex;
+    margin-top: 20px;
+
+}
+.secondRow > .secondColumn{
+    margin-left: 100px;
+}
+.opinion {
+    width: 900px;
+    height: 500px;
+    margin-top: 80px;
+    background: #F5F7FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.opinion > .title > h3{
+    margin-left: 350px;
+    margin-bottom: 30px;
+}
+.opinion > .title > h6{
+    margin-left: 250px;
+    margin-bottom: 30px;
+}
+.opinion > .title > i{
+    margin: 30px;
+}
+.opinion > .title > .image1>img{
+    width: 80px;
+    height: 80px;
+    margin-left: 400px;
+}
+
+/*Sign In / Sign Up page*/
+
+
+.row{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+.row2{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+.row3{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+.card {
+    box-shadow: 0 4px 8px 0 #535151;
+    transition: 0.3s;
+    width: 270px;
+
+}
+
+.card:hover {
+
+    box-shadow: 0 8px 16px 0 #535151;
+}
+.card > img {
+    width:320px;
+    height: 230px;
+}
+.container_list {
+    padding: 30px 10px;
+}
+.chooseCaregiver > h1{
+    text-align: center;
+    margin: 50px;
+    font-size: 50px;
+    color: #535151;
+}
+.chooseCaregiver >p{
+    text-align: center;
+    margin: 20px;
+    font-size:25px;
+    color: #535151;
+}
+.container_list > h4{
+    margin-left: 100px;
+
+}
+.first{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+.second{
+    margin-top: 20px;
+}
+.third{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+.third > i {
+    font-size: 30px;
+    color: green;
+}

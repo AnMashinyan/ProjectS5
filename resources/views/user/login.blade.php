@@ -5,15 +5,26 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{asset('assets/images/logo.png')}}">
+    <link rel="icon" href="{{asset('assets/imgs/logo.png')}}">
     <link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
-    <title>Մուտք</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>LogIn</title>
+    <style>
+        html{
+            background: #D3D3D3;
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper fadeInDown">
+<div>
+    <i style="font-size: 40px" class="fa fa-home" aria-hidden="true"></i>
+   <a  style="font-size: 40px" href="{{route('indexPage')}}">Home
+    </a>
+</div>
+    <div class="wrapper fadeInDown">
     <div id="formContent">
-        <h2 class="active">Մուտք</h2>
-        <h2 class="inactive underlineHover"><a href="{{route('register.create')}}">Գրանցվել</a></h2>
+        <h2 class="active">LogIn</h2>
+        <h2 class="inactive underlineHover"><a href="{{route('register.create')}}">Register</a></h2>
             <div class="fadeIn first">
                 @if ($errors->any())
                     <div>
@@ -33,13 +44,11 @@
             </div>
             <form action="{{route('login')}}" method="post">
                 @csrf
-                <input type="email" id="login" name="email" class="fadeIn second" placeholder="Էլ. փոստ*">
-                <input type="password" id="password" name="password" class="fadeIn third" placeholder="Գաղտնաբառ*">
-                <input type="submit" class="fadeIn fourth" value="Մուտք">
+                <input type="email" id="login" name="email" class="fadeIn second" placeholder="email*">
+                <input type="password" id="password" name="password" class="fadeIn third" placeholder="password*">
+                <input type="submit" class="fadeIn fourth" value="LogIn">
             </form>
-        {{--        <div id="formFooter">
-                    <a class="underlineHover" href="#">Forgot Password?</a>
-                </div>--}}
+
     </div>
 </div>
 </body>

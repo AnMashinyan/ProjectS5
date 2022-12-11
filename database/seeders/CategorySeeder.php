@@ -16,12 +16,14 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert(
             [
-                ['title' => 'Մանկավարժական խորհուրդ'],
-                ['title' => 'Կառավարման խորհուրդ'],
-                ['title' => 'Ծնողական խորհուրդ'],
-                ['title' => 'Աշակերտական խորհուրդ'],
-                ['title' => 'Մեթոդմիավորում'],
-                ['title' => 'Դասղեկներ']
+
+                ['title' => 'patient'],
+                ['title' => 'careg'],
+                ['title' => 'work'],
+                ['title' => 'child'],
+                ['title' => 'hobby'],
+                ['title' => 'family']
+
             ]
         );
     }

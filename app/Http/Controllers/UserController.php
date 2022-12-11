@@ -24,13 +24,13 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:3',
         ],
         [
-            'advice.required' => 'Ընտրել խորհուրդը',
-            'name.required' => 'Գրեք ձեր անունը',
-            'surname.required' => 'Գրեք ձեր ազգանունը',
-            'email.required' => 'Լրացրեք Էլ․ հասցեն',
-            'email.email' => 'Այդպիսի Էլ․ հասցե գոյություն չունի',
-            'email.unique' => 'Այդպիսի Էլ․ հասցե գոյություն ունի',
-            'password.required' => 'Լրացրեք գաղտնաբառը',
+            'advice.required' => 'Select the type',
+            'name.required' => 'Write your name',
+            'surname.required' => 'Write your surname',
+            'email.required' => 'Fill the email',
+            'email.email' => 'Such email address does not exist',
+            'email.unique' => 'Such email address exists',
+            'password.required' => 'Fill your password',
         ]);
 
         $user = User::create([
@@ -41,8 +41,8 @@ class UserController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
-        session()->flash('success', 'Դուք հաջողությամբ գրանցվել եք');
-//        Auth::login($user);
+        session()->flash('success', 'You have successfully registered.
+        You can login after admin approval.');
         return redirect()->route('login.create');
     }
 
@@ -58,23 +58,25 @@ class UserController extends Controller
             'password' => 'required',
         ],
         [
-            'email.required' => 'Լրացրեք Էլ․ հասցեն',
-            'email.email' => 'Այդպիսի Էլ․ հասցե գոյություն չունի',
-            'password.required' => 'Լրացրեք գաղտնաբառը',
+            'email.required' => 'Fill in Email the address',
+            'email.email' => 'Such email address does not exist',
+            'password.required' => 'Fill in the password',
         ]);
         if (Auth::attempt([
                 'email' => $request->email,
                 'password' => $request->password,
             ]) && Auth::user()->verified == 1) {
-            session()->flash('success', "Ողջյուն");
+            session()->flash('success', "Hello");
             if (Auth::user()->is_admin) {
                 return redirect()->route('admin.index');
             }
-            if (Auth::user()->advice == 1 || Auth::user()->advice == 2 || Auth::user()->advice == 3 || Auth::user()->advice == 4) {
-                return redirect()->route('home.index');
+
+            if($user_id = Auth::user()->id){
+
+                return redirect()->route('login.create');
             }
         }
-        session()->flash('error', "Սխալ էլ․ փոստ կամ Գաղտնաբառ");
+        session()->flash('error', "Incorrect email Email or Password");
         Auth::logout();
         return redirect()->route('login.create');
     }
@@ -84,4 +86,9 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('login.create');
     }
+
+
+
+
 }
+

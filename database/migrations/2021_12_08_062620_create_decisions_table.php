@@ -16,9 +16,7 @@ class CreateDecisionsTable extends Migration
         Schema::create('decisions', function (Blueprint $table) {
             $table->id();
             $table->integer('category_id')->unsigned();
-//            $table->string('heard');
-//            $table->string('reply');
-//            $table->string('decided');
+
             $table->longText('text');
             $table->timestamps();
         });

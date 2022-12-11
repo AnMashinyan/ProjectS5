@@ -10,6 +10,7 @@ class MainController extends Controller
 {
     public function index()
     {
+//        $decision = Decision::get()->all();
         $users = User::where('verified',0)->get();
         return view('admin.index', compact('users'));
     }

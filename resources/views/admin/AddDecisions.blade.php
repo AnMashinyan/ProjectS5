@@ -1,4 +1,5 @@
-<!doctype html>
+
+    <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,26 +8,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
     <title>Admin</title>
-    <link rel="icon" href="{{asset('assets/images/logo.png')}}">
+    <link rel="icon" href="{{asset('assets/assets/images/logo.png')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     {{--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>--}}
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
     <meta name="csrf-token" content="{{{ csrf_token() }}}">
+    <style>
+        html{
+            background: #D3D3D3;
+        }
+    </style>
 </head>
 <body>
-<p class="logout"><a href="{{route('logout')}}">Ելք</a></p>
+<p class="logout"><a href="{{route('logout')}}">LogOut</a></p>
 <div class="wrapper fadeInDown">
     <div id="formContent" style="max-width:100%; min-height:500px">
-        <h2 class="inactive underlineHover"><a href="{{route('admin.index')}}">Օգտագործող</a></h2>
-        <h2 class="active">Ավելացնել որոշում</h2>
+        <h2 class="inactive underlineHover"><a href="{{route('admin.index')}}">User</a></h2>
+        <h2 class="active">Edit the user</h2>
         <div class="fadeIn first">
             <div class="container">
                 <div class="table-responsive">
-                    <div class="searchDiv">
-                        <input type="text" name="search" class="searchInput"
-                               placeholder="Փնտրել արձանագրություն համարով">
-                        <div class="result">
+{{--                    <div class="searchDiv">--}}
+{{--                        <input type="text" name="search" class="searchInput"--}}
+{{--                               placeholder="Search by caregiver number">--}}
+{{--                        <div class="result">--}}
 
                         </div>
                     </div>
@@ -34,21 +40,16 @@
                         <span id="result"></span>
                         <br>
                         <select class="form-select" aria-label="Default select example" name="category_id">
-                            <option value="" selected>Ընտրել խորհուրդ</option>
-                            <option value="1">Մանկավարժական խորհուրդ</option>
-                            <option value="2">Կառավարման խորհուրդ</option>
-                            <option value="3">Ծնողական խորհուրդ</option>
-                            <option value="4">Աշակերտական խորհուրդ</option>
-                            <option value="5">Մեթոդմիավորում</option>
-                            <option value="6">Դասղեկներ</option>
+                            <option value="1" selected>To sign a contract </option>
+
                         </select>
                         <table class="table table-bordered table-striped" id="user_table">
                             <thead>
                             <tr>
-                                <th>Լսեցին</th>
-                                <th>Պատասխանեցին</th>
-                                <th>Որոշեցին</th>
-                                <th>Գործողություն</th>
+                                <th>Patient </th>
+                                <th>Caregiver</th>
+                                <th>Time</th>
+                                <th>Activiy</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -60,7 +61,7 @@
                                 <td>
                                     @csrf
                                     <input type="submit" name="save" id="save" class="btn btn-primary"
-                                           value="Հաստատել"/>
+                                           value="Confirm"/>
                                 </td>
                             </tr>
                             </tfoot>
@@ -68,22 +69,20 @@
                     </form>
                 </div>
                 <div class="fullInfo">
-                    @foreach($decision as $value)
-                        @foreach(json_decode($value->text) as $item)
-                            <div class="inf">
-                                {{--                            <p>{{$item->heard}}</p>--}}
-                                {{--                            <p>{{$item->reply}}</p>--}}
-                                {{--                            <p>{{$item->decided}}</p>--}}
-                                <span>{{\Carbon\Carbon::parse($item->created_at)->format('d m Y')}}</span>
-                                <a href="{{url('decisions/pdfexport/' . $value->id)}}" target="_blank"><img
-                                        src="{{asset('assets/images/pdf-file.png')}}" alt="" width="15"></a>
-                                <a href="{{url('admin/decisions/delete/' . $value->id)}}"
-                                   onclick="return confirm('Ուզում եք ջնջել ?')"><img
-                                        src="{{asset('assets/images/close.png')}}" width="15"></a>
-                            </div>
-                            @break
-                        @endforeach
-                    @endforeach
+{{--                    @foreach($decision as $value)--}}
+{{--                        @foreach(json_decode($value->text) as $item)--}}
+{{--                            <div class="inf">--}}
+
+{{--                                <span>{{\Carbon\Carbon::parse($item->created_at)->format('d m Y')}}</span>--}}
+{{--                                <a href="{{url('decisions/pdfexport/' . $value->id)}}" target="_blank"><img--}}
+{{--                                        src="{{asset('assets/images/pdf-file.png')}}" alt="" width="15"></a>--}}
+{{--                                <a href="{{url('admin/decisions/delete/' . $value->id)}}"--}}
+{{--                                   onclick="return confirm('Do you want to delete ?')"><img--}}
+{{--                                        src="{{asset('assets/images/close.png')}}" width="15"></a>--}}
+{{--                            </div>--}}
+{{--                            @break--}}
+{{--                        @endforeach--}}
+{{--                    @endforeach--}}
                 </div>
             </div>
         </div>
@@ -102,10 +101,10 @@
             html += '<td><textarea type="text" name="reply[]" class="form-control"></textarea></td>';
             html += '<td><textarea type="text" name="decided[]" class="form-control"></textarea></td>';
             if (number > 1) {
-                html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Ջնջել</button></td></tr>';
+                html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Delete</button></td></tr>';
                 $('tbody').append(html);
             } else {
-                html += '<td><button type="button" name="add" id="add" class="btn btn-success">Ավելացնել</button></td></tr>';
+                html += '<td><button type="button" name="add" id="add" class="btn btn-success">Add</button></td></tr>';
                 $('tbody').html(html);
             }
         }
@@ -183,13 +182,13 @@
                                             <a href="decisions/pdfexport/${element['id']}" target="_blank"><img
                                                     src="{{asset('assets/images/pdf-file.png')}}" alt="" width="15"></a>
                                             <a href="decisions/delete/${element['id']}"
-                                               onclick="return confirm('Ուզում եք ջնջել ?')"><img
+                                               onclick="return confirm('Do you want to delete ?')"><img
                                                     src="{{asset('assets/images/close.png')}}" width="15"></a>
                                     </div>
                                 `)
                             })
                         } else {
-                            // $('.result').append(`<p>Արձանագրություն չի գտնվել</p>`)
+
                             $('.searchInput').css({
                                 "borderColor": "red"
                             })
